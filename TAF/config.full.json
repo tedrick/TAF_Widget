@@ -1,0 +1,31 @@
+{
+    "searchService": {
+                    "url": "http://dotfedgis.cloudapp.net/arcgis/rest/services/WM_US/MapServer/0",
+                    "name": "U.S. Counties",
+                    "placeholder": "Arlington",
+                    "displayField": "DisplayName",
+                    "keyField": "FIPS",
+                    "outFields": ["NAME", "STATE_NAME", "DisplayName", "FIPS"],
+                    "searchFields": ["NAME"]
+    },
+    "displayVariables": [
+        {"name":"Direction", "displayValues": ["Going To", "Leaving From"], "values":["origin", "dest"], "bindTo":"activeDirection"},
+        {"name":"Year", "displayValues": ["2008", "2040"], "values":["_2008", "_2040"], "bindTo":"activeYear"},
+        {"name":"Mode", "displayValues": ["Auto (business)", "Auto (non-business)", "Air", "Bus", "Rail"], "values": ["autoBS", "autoNB", "Air", "Bus", "Rail"], "bindTo":"activeMode"}
+    ],
+    "layers" : [
+        {"Direction":"dest", "Year":"_2008", "Mode":"Air", "idName":"D_AIR_2008", "url":"http://dotfedgis.cloudapp.net/arcgis/rest/services/GoingToAir2008/MapServer/0", "keyField": "D_FIPS"},
+        {"Direction":"dest", "Year":"_2040", "Mode":"Air", "idName":"D_AIR_2040", "url":"http://dotfedgis.cloudapp.net/arcgis/rest/services/GoingToAir2040/MapServer/0", "keyField": "D_FIPS"},
+        {"Direction":"dest", "Year":"_2008", "Mode":"autoBS", "idName":"D_AUTOBS_2008", "url":"http://dotfedgis.cloudapp.net/arcgis/rest/services/GoingToAutoBS/MapServer/0", "keyField": "D_FIPS"},
+        {"Direction":"dest", "Year":"_2040", "Mode":"autoBS", "idName":"D_AUTOBS_2040", "url":"http://dotfedgis.cloudapp.net/arcgis/rest/services/GoingToAutoBS/MapServer/1", "keyField": "D_FIPS"},
+        {"Direction":"dest", "Year":"_2008", "Mode":"autoNB", "idName":"D_AUTONB_2008", "url":"http://dotfedgis.cloudapp.net/arcgis/rest/services/GoingToAutoNB/MapServer/0", "keyField": "D_FIPS"},
+        {"Direction":"dest", "Year":"_2040", "Mode":"autoNB", "idName":"D_AUTONB_2040", "url":"http://dotfedgis.cloudapp.net/arcgis/rest/services/GoingToAutoNB/MapServer/1", "keyField": "D_FIPS"},
+        {"Direction":"dest", "Year":"_2008", "Mode":"Bus", "idName":"D_BUS_2008", "url":"http://dotfedgis.cloudapp.net/arcgis/rest/services/GoingToBus/MapServer/0", "keyField": "D_FIPS"},
+        {"Direction":"dest", "Year":"_2040", "Mode":"Bus", "idName":"D_BUS_2040", "url":"http://dotfedgis.cloudapp.net/arcgis/rest/services/GoingToBus/MapServer/1", "keyField": "D_FIPS"},
+        {"Direction":"dest", "Year":"_2008", "Mode":"Rail", "idName":"D_RAIL_2008", "url":"http://dotfedgis.cloudapp.net/arcgis/rest/services/GoingToRail/MapServer/0", "keyField": "D_FIPS"},
+        {"Direction":"dest", "Year":"_2040", "Mode":"Rail", "idName":"D_RAIL_2040", "url":"http://dotfedgis.cloudapp.net/arcgis/rest/services/GoingToRail/MapServer/1", "keyField": "D_FIPS"},
+        {"Direction":"origin", "Year":"_2040", "Mode":"Rail", "idName":"O_RAIL_2040", "url": "http://dotfedgis.cloudapp.net/arcgis/rest/services/testRailSQL/MapServer/0", "keyField": "OFIPS_STR"}
+    ],
+    "valueField": "VALUE",
+    "excludeValuesClause": "> 1",
+}
